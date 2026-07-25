@@ -329,7 +329,7 @@ then
         COMPILER_RT_BUILTINS_FILE="libclang_rt.builtins-arm.a"
     fi
     export \
-        CPPFLAGS_FOR_TARGET="-isystem \"$CIRCLEHOME/include\" -isystem \"$CIRCLEHOME/addon\" -isystem \"$TOPDIR/include\"" \
+        CPPFLAGS_FOR_TARGET="-isystem \"$CIRCLEHOME/include\" -isystem \"$CIRCLEHOME/addon\" -isystem \"$TOPDIR/include\" -I\"$CIRCLEHOME/addon/fatfs\" -std=c++14 -include \"$TOPDIR/include/force_circle_assert.h\" -D_GNU_SOURCE" \
         CC_FOR_TARGET="clang ${CLANG_TARGET}" \
         CXX_FOR_TARGET="clang++ ${CLANG_TARGET}" \
         GCC_FOR_TARGET="clang ${CLANG_TARGET}" \
@@ -341,7 +341,7 @@ then
         OBJDUMP_FOR_TARGET="llvm-objdump"
 else
     export \
-        CPPFLAGS_FOR_TARGET="-isystem \"$CIRCLEHOME/include\" -isystem \"$CIRCLEHOME/addon\" -isystem \"$TOPDIR/include\"" \
+        CPPFLAGS_FOR_TARGET="-isystem \"$CIRCLEHOME/include\" -isystem \"$CIRCLEHOME/addon\" -isystem \"$TOPDIR/include\" -I\"$CIRCLEHOME/addon/fatfs\" -std=c++14 -include \"$TOPDIR/include/force_circle_assert.h\" -D_GNU_SOURCE" \
         CC_FOR_TARGET=${TOOLPREFIX}gcc \
         CXX_FOR_TARGET=${TOOLPREFIX}g++ \
         GCC_FOR_TARGET=${TOOLPREFIX}gcc \

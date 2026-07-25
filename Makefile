@@ -29,12 +29,16 @@ endif
 
 build-samples: build-stdlib-samples $(MBEDTLS_SAMPLES)
 
-circle:
+circle: newlib
 	+cd libs/circle && EXTRAINCLUDE="$(CIRCLE_NEWLIB_HEADERS)" ./makeall --nosample
 	$(MAKE) -C libs/circle/addon/SDCard EXTRAINCLUDE="$(CIRCLE_NEWLIB_HEADERS)"
 	$(MAKE) -C libs/circle/addon/fatfs EXTRAINCLUDE="$(CIRCLE_NEWLIB_HEADERS)"
 	$(MAKE) -C libs/circle/addon/qemu EXTRAINCLUDE="$(CIRCLE_NEWLIB_HEADERS)"
-	+cd libs/circle/addon/wlan && EXTRAINCLUDE="$(CIRCLE_NEWLIB_HEADERS)" ./makeall --nosample
+	# BMC64: addon/wlan (rsta2/hostap's wpa_supplicant) isn't needed - BMC64
+	# has no WiFi feature - and its dependency-file generation has a
+	# pre-existing bug (a bare, path-less "limits.h" token gets emitted
+	# alongside the correctly-prefixed one), which breaks under recent
+	# GNU Make regardless of build order.
 
 newlib:
 	CPPFLAGS_FOR_TARGET='$(CPPFLAGS_FOR_TARGET)' \

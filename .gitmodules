@@ -1,19 +1,11 @@
 [submodule "libs/circle"]
 	path = libs/circle
-	url = https://github.com/rsta2/circle.git
+	url = https://github.com/oysteinskotheim/circle.git
+	branch = bmc64
 [submodule "libs/circle-newlib"]
 	path = libs/circle-newlib
-	url = https://codeberg.org/larchcone/circle-newlib.git
-	branch = circle-newlib
+	url = https://github.com/oysteinskotheim/circle-newlib.git
+	branch = bmc64
 [submodule "libs/mbedtls"]
 	path = libs/mbedtls
 	url = https://github.com/ARMmbed/mbedtls.git
-[submodule "libs/doctest"]
-	path = libs/doctest
-	url = https://github.com/doctest/doctest.git
-[submodule "libs/json"]
-	path = libs/json
-	url = https://github.com/nlohmann/json.git
-[submodule "libs/mongoose"]
-	path = libs/mongoose
-	url = https://github.com/cesanta/mongoose.git
